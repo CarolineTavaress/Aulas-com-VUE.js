@@ -1,0 +1,42 @@
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: rgb(165, 114, 212);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition:background-color 0.3 ease;
+}
+
+li:hover{
+    background-color: blueviolet;
+}
+
+li span.nome{
+    font-weight: bold;
+    color: orange;
+}
+
+li span.idade{
+    font-style: italic;
+    color: orangered
+}
+
+.detalhes{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #650238;
+    border-radius: 5px;
+}
+
+li.expanded{
+    background-color: #650238;
+}
+
+li.expanded.detalhes{
+    display: block;
+}

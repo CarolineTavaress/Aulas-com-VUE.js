@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculadora {
+    width: 350px;
+    height: 420px;
+    background-color: rgb(246, 246, 88);
+    border-radius: 10px;
+    opacity: 0; /* Começa com a calculadora invisível */
+    animation: fadeIn 0.5s forwards; /* Animação de fadeIn */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.linha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+button {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    border: none;
+    background-color: violet;
+    transition: transform 0.3s; /* Transição suave de escala ao passar o mouse */
+}
+
+button:hover {
+    color: white;
+    background-color: rgb(202, 74, 193);
+    transform: scale(1.2); /* Aumenta a escala ao passar o mouse */
+}
+
+button:active {
+    color: white;
+    background-color: rgb(111, 68, 130);
+}
+
+.operador {
+    color: white;
+    background-color: #ffa500;
+}
+
+.igual {
+    color: white;
+    background-color: rgb(82, 136, 229);
+}
+
+.display {
+    display: flex;
+    justify-content: end;
+    height: 30px;
+    margin-right: 5px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.apagar{
+    position: absolute;
+    right: 5px;
+}

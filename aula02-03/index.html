@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 02/03 - Intro VUE</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <p> Olá {{ nome }}, bem vindo(a) ao novo mundo de Vue.js </p>
+    </div>
+    <div id="app2">
+        <h1>{{ titulo }}</h1>
+        <p> Olá {{ nome }}, bem vindo(a) ao novo mundo de Vue.js </p>
+        <p>A SOMA de 5 + 4 = {{5 + 4}}</p>
+        <p>A MULTIPLICAÇÃO de 5 X 4 = {{ mult() }}</p>
+        <p>A SUBTRAÇÃO de {{ num1 }} - {{ num2 }} = {{ sub(num1, num2) }}</p>
+        <P>O {{ num1 }} é {{ resposta() }}</P>
+        <p>Os seguintes número são primos {{ resultado()}}</p>
+        <p>Timer: {{ timer() }}</p>
+    </div>
+</body>
+</html>
+
+<script>
+    const { createApp } = Vue;
+    createApp({ 
+        data() {
+            return {
+                titulo: "Hello World!",
+                nome: "Caroline"
+            }
+        }
+     }).mount("#app")
+
+     createApp({
+        data() {
+            return{
+                titulo: "Estamos no App2",
+                nome: "Zé",
+                num1: 10,
+                num2: 48,
+                vetor: [2, 3 , 4, 5, 6, 7, 8 , 9 , 10, 11, 12, 13, 14, 15],
+                num: 0
+            }
+        },
+        methods: {
+            mult: () => {
+                let x = 5;
+                let y = 4;
+                return x * y
+            }, 
+            sub(x, y){
+                return x - y;
+            },
+            resposta(){
+                if (this.num1 % 2 === 0){
+                    return "Par"
+                } else{
+                    return "Impar"
+                }
+            },
+            timer(){
+                setTimeout(() => {
+                    this.num +=1;
+                }, 1000)
+                return this.num
+            }
+        }
+     }).mount("#app2")
+</script>
