@@ -10,13 +10,16 @@ createApp({
         }
     },
     computed:{
-
+        filteredPokemons(){
+            return this.pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(this.searchText.toLowerCase()))
+        }
     },
     created(){
-
+        this.fetchPokemons();
+        window.addEventListener('scroll', this.handleScrool)
     },
     destroyed(){
-
+        this.removeEventListener('scroll', this.handleScrool)
     },
     methods:{
             async fetchPokemons(){
@@ -26,7 +29,8 @@ createApp({
                     const pokemon_details_promises = data.results.map(async pokemon => this.fetch_pokemon_data(pokemon.url))
                     const pokemon_details = await Promise.all(pokemon_details_promises)
                     this.pokemons = [... this.pokemons, ... pokemon_details];
-                    this.nextPage++
+                    this.nextPage++;
+                    this.loading = false;
                 } catch (error){
                     console.error(error)
                 }
@@ -69,6 +73,14 @@ createApp({
                     flying: 'flying'
                 }
                 return typeClassMap[type] || ''
+            },
+            handleScrool(){
+                const bottom_of_page = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight
+
+                if(bottom_of_page && !this.loading){
+                    this.loading = true;
+                    this.fetchPokemons();
+                }
             }
     }
 }).mount("#app")

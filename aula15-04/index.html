@@ -9,9 +9,9 @@
 </head>
 <body>
     <div id="app" v-cloak>
-        <button @click="fetchPokemons"> Chamar Pokemons</button>
+        <input type="search" v-model="searchText" placeholder="Pesquisar" class="pesquisar">
         <ul>
-            <li v-for="pokemon in pokemons" :key="pokemon.id" :class="getTypeClass(pokemon.types[0].type.name)">
+            <li v-for="pokemon in filteredPokemons" :key="pokemon.id" :class="getTypeClass(pokemon.types[0].type.name)">
                 <div class="pokemon-card">
                     <img :src="pokemon.sprite.front_default" alt="pokemon-image">
                     <p class="pokemon-name">{{pokemon.name.toUpperCase() }}</p>
@@ -22,6 +22,7 @@
                 </div>
             </li>
         </ul>
+        <div v-if="loading">Loading...</div>
     </div>
 </body>
 </html>
