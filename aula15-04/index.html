@@ -9,7 +9,9 @@
 </head>
 <body>
     <div id="app" v-cloak>
-        <input type="search" v-model="searchText" placeholder="Pesquisar" class="pesquisar">
+        <div class="pesquisar">
+            <input type="search" v-model="searchText" placeholder="Pesquisar" class="pesquisar">
+        </div>
         <ul>
             <li v-for="pokemon in filteredPokemons" :key="pokemon.id" :class="getTypeClass(pokemon.types[0].type.name)">
                 <div class="pokemon-card">
